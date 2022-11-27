@@ -17,6 +17,92 @@
         <type>checkbox</type>
     </field>
     <field>
+        <id>connection.unique</id>
+        <label>Unique</label>
+        <type>dropdown</type>
+        <help>Connection uniqueness policy to enforce.
+          To avoid multiple connections from the same user, a uniqueness policy can be enforced.
+        </help>
+        <advanced>true</advanced>
+    </field>
+    <field>
+        <id>connection.aggressive</id>
+        <label>Aggressive</label>
+        <type>checkbox</type>
+        <advanced>true</advanced>
+        <help>
+          Enables IKEv1 Aggressive Mode instead of IKEv1 Main Mode with Identity Protection.
+          Aggressive Mode is considered less secure because the ID and HASH payloads are exchanged unprotected.
+          This allows a passive attacker to snoop peer identities and even worse, start dictionary attacks on the Preshared Key
+        </help>
+    </field>
+    <field>
+        <id>connection.version</id>
+        <label>Version</label>
+        <type>dropdown</type>
+        <help>
+          IKE major version to use for connection. 1 uses IKEv1 aka ISAKMP, 2 uses IKEv2.
+          A connection using IKEv1+IKEv2 accepts both IKEv1 and IKEv2 as a responder
+          and initiates the connection actively with IKEv2
+        </help>
+    </field>
+    <field>
+        <id>connection.mobike</id>
+        <label>MOBIKE</label>
+        <type>checkbox</type>
+        <help>
+          Enables MOBIKE on IKEv2 connections.
+          MOBIKE is enabled by default on IKEv2 connections and allows mobility of clients and multi-homing on servers
+          by migrating active IPsec tunnels.
+          Usually keeping MOBIKE enabled is unproblematic, as it is not used if the peer does not indicate support for it.
+          However, due to the design of MOBIKE, IKEv2 always floats to UDP port 4500 starting from the second exchange.
+          Some implementations don’t like this behavior, hence it can be disabled
+        </help>
+    </field>
+    <field>
+        <id>connection.local_addrs</id>
+        <label>Local addresses</label>
+        <type>select_multiple</type>
+        <style>tokenize</style>
+        <allownew>true</allownew>
+        <help>
+          Local address[es] to use for IKE communication.
+          Accepts single IPv4/IPv6 addresses, DNS names, CIDR subnets or IP address ranges.
+          As an initiator, the first non-range/non-subnet is used to initiate the connection from.
+          As a responder the local destination address must match at least to one of the specified addresses, subnets or ranges.
+          If FQDNs are assigned, they are resolved every time a configuration lookup is done.
+          If DNS resolution times out, the lookup is delayed for that time. When left empty %any is choosen as default.
+        </help>
+    </field>
+    <field>
+        <id>connection.remote_addrs</id>
+        <label>Remote addresses</label>
+        <type>select_multiple</type>
+        <style>tokenize</style>
+        <allownew>true</allownew>
+        <help>
+          Remote address[es] to use for IKE communication.
+          Accepts single IPv4/IPv6 addresses, DNS names, CIDR subnets or IP address ranges.
+          As an initiator, the first non-range/non-subnet is used to initiate the connection to.
+          As a responder, the initiator source address must match at least to one of the specified addresses, subnets or ranges.
+          If FQDNs are assigned they are resolved every time a configuration lookup is done.
+          If DNS resolution times out, the lookup is delayed for that time.
+          To initiate a connection, at least one specific address or DNS name must be specified.
+        </help>
+    </field>
+    <field>
+        <id>connection.encap</id>
+        <label>UDP encapsulation</label>
+        <type>checkbox</type>
+        <advanced>true</advanced>
+        <help>
+          To enforce UDP encapsulation of ESP packets, the IKE daemon can manipulate the NAT detection payloads.
+          This makes the peer believe that a NAT situation exist on the transmission path, forcing it to encapsulate ESP packets in UDP.
+          Usually this is not required but it can help to work around connectivity issues with too restrictive intermediary
+          firewalls that block ESP packets
+        </help>
+    </field>
+    <field>
         <id>connection.description</id>
         <label>Description</label>
         <type>text</type>

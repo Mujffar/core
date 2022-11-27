@@ -21,12 +21,14 @@
             add:'/api/ipsec/connections/add_' + obj_type + '/',
             del:'/api/ipsec/connections/del_' + obj_type + '/',
             options:{
-                navigation: obj_type == 'child' ? 3 : 0,
-                selection: obj_type == 'child' ? true : false,
+                navigation: obj_type === 'child' ? 3 : 0,
+                selection: obj_type === 'child' ? true : false,
                 useRequestHandlerOnGet: true,
                 requestHandler: function(request) {
                     request['connection'] = $("#connection\\.uuid").val();
                     if (request.rowCount === undefined) {
+                        // XXX: We can't easily see if we're being called by GET or POST, buf if no rowCount is being offered
+                        // it's highly likely a POST from bootgrid
                         return new URLSearchParams(request).toString();
                     } else {
                         return request
@@ -35,6 +37,14 @@
                 }
             }
           });
+          if (obj_type !== 'child') {
+            $("#"+obj_type+"\\.auth").change(function(){
+              $("."+obj_type+"_auth").closest("tr").hide();
+              $("."+obj_type+"_auth_"+$(this).val()).each(function(){
+                  $(this).closest("tr").show();
+              });
+            });
+          }
         }
 
         $(".hidden_attr").closest('tr').hide();
