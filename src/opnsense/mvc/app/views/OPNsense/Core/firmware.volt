@@ -49,7 +49,6 @@
 
     /**
      * retrieve update status from backend
-     */
     function updateStatus() {
         $('#upgrade_maj').hide();
         $('#upgrade').hide();
@@ -71,7 +70,7 @@
                     row['reason']+'</td><td>'+row['repository'] + '</td></tr>');
 
                     if (row['name'] == data['product_target'] && row['new'] != 'N/A') {
-                        show_log = row['new'].replace(/[_-].*/, '');
+                        show_log = row['new'].replace(/[_-]., '');
                     }
                 });
                 $('#update_status_container').hide();
@@ -87,7 +86,7 @@
                 $.status_reboot = data['status_reboot'];
 
                 if (data['upgrade_major_message'] != '') {
-                    /* we trust this data, it was signed by us and secured by csrf */
+                    /* we trust this data, it was signed by us and secured by csrf 
                     stdDialogInform(
                         '{{ lang._('Upgrade instructions') }}',
                         htmlDecode(data['upgrade_major_message']),
@@ -114,6 +113,7 @@
         });
     }
 
+     */
     /**
      * perform backend action and install poller to update status
      */
