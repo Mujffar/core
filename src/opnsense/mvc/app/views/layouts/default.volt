@@ -11,8 +11,8 @@
     <meta name="copyright" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
-    <title>{{headTitle|default("OPNsense") }} | {{system_hostname}}.{{system_domain}}</title>
-    {% set theme_name = ui_theme|default('opnsense') %}
+    <title>{{headTitle|default("ReachGuard") }} | {{system_hostname}}.{{system_domain}}</title>
+    {% set theme_name = ui_theme|default('reachGuard') %}
 
     <!-- Favicon -->
     <link href="{{ cache_safe('/ui/themes/%s/build/images/favicon.png' | format(theme_name)) }}" rel="shortcut icon">
