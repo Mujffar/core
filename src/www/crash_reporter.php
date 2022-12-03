@@ -153,67 +153,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $has_crashed = !empty(get_crash_report());
 }
 
-if ($has_crashed) {
-    $crash_files = glob("/var/crash/*");
-    $crash_reports['System Information'] = trim($crash_report_header);
-    if (file_exists('/tmp/PHP_errors.log')) {
-        $php_errors_size = @filesize('/tmp/PHP_errors.log');
-        $max_php_errors_size = 1 * 1024 * 1024;
-        // limit reporting for PHP_errors.log to $max_php_errors_size characters
-        if ($php_errors_size > $max_php_errors_size) {
-            // if file is to large, only display last $max_php_errors_size characters
-            $php_errors .= @file_get_contents(
-                          '/tmp/PHP_errors.log',
-                          NULL,
-                          NULL,
-                          ($php_errors_size - $max_php_errors_size),
-                          $max_php_errors_size
-            );
-        } else {
-            $php_errors = @file_get_contents('/tmp/PHP_errors.log');
-        }
-        if (!empty($php_errors)) {
-            $crash_reports['PHP Errors'] = trim($php_errors);
-        }
-    }
-    $dmesg_boot = @file_get_contents('/var/run/dmesg.boot');
-    if (!empty($dmesg_boot)) {
-        $crash_reports['dmesg.boot'] = trim($dmesg_boot);
-    }
-    foreach ($crash_files as $cf) {
-        if (!is_link($cf) && $cf != '/var/crash/minfree' && $cf != '/var/crash/bounds' && filesize($cf) < 450000) {
-            $crash_reports[$cf] = trim(file_get_contents($cf));
-        }
-    }
-}
-
-$message = gettext('No issues were detected.');
-if ($has_crashed) {
-    if ($is_prod) {
-        $message = gettext('An issue was detected.');
-    } else {
-        $message = gettext('Development deployment is configured so crash reports cannot be sent.');
-    }
-}
-
-if (isset($pconfig['Submit'])) {
-    if ($pconfig['Submit'] == 'yes') {
-        if (!$has_crashed) {
-            $message = gettext('Thank you for submitting this crash report.');
-        } else {
-            $message = gettext('This crash report contains no actual crash information. If you want to submit a problem please fill out your e-mail and description below.');
-        }
-    } elseif ($pconfig['Submit'] == 'no') {
-        if ($is_prod) {
-            $message = gettext('Please consider submitting a crash report if the error persists.');
-        }
-    }
-}
-
-// escape form output before processing
-legacy_html_escape_form_data($pconfig);
-
-?>
 <body>
 
 <?php include("fbegin.inc"); ?>
