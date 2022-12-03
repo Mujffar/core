@@ -5,8 +5,8 @@ $product = product::getInstance();
 ?>
       <footer class="page-foot">
         <div class="container-fluid">
-          <a target="_blank" href="<?= $product->website() ?>"><?= $product->name() ?></a> (c) <?= $product->copyright_years() ?>
-          <a target="_blank" href="<?= $product->copyright_url() ?>"><?= $product->copyright_owner() ?></a>
+          <a target="_blank" href="https://cloudetel.com/">ReachGuard</a> (c) 2022
+          <a target="_blank" href="https://cloudetel.com/">Cloud Etel</a>
         </div>
       </footer>
 
