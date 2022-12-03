@@ -832,12 +832,6 @@
                         <tbody>
                             <tr>
                                 <td style="width: 20px;"></td>
-                                <td style="width: 150px;">{{ lang._('Type') }}</td>
-                                <td id="product_id"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 20px;"></td>
                                 <td style="width: 150px;">{{ lang._('Version') }}</td>
                                 <td id="product_version"></td>
                                 <td></td>
@@ -858,18 +852,6 @@
                                 <td style="width: 20px;"></td>
                                 <td style="width: 150px;">{{ lang._('Commit') }}</td>
                                 <td id="product_hash"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 20px;"></td>
-                                <td style="width: 150px;">{{ lang._('Mirror') }}</td>
-                                <td id="product_mirror"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 20px;"></td>
-                                <td style="width: 150px;">{{ lang._('Repositories') }}</td>
-                                <td id="product_repos"></td>
                                 <td></td>
                             </tr>
                             <tr>
