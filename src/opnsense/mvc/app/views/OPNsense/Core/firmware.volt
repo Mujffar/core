@@ -904,37 +904,6 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="plugins" class="tab-pane">
-                    <table class="table table-striped table-condensed table-responsive" id="pluginlist">
-                        <thead>
-                            <tr>
-                                <th style="vertical-align:middle"><input type="text" class="input-sm" autocomplete="off" id="plugin_search" placeholder="{{ lang._('Name') }}"></th>
-                                <th style="vertical-align:middle">{{ lang._('Version') }}</th>
-                                <th style="vertical-align:middle">{{ lang._('Size') }}</th>
-                                <th style="vertical-align:middle">{{ lang._('Repository') }}</th>
-                                <th style="vertical-align:middle">{{ lang._('Comment') }}</th>
-                                <th style="vertical-align:middle"></th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-                <div id="packages" class="tab-pane">
-                    <table class="table table-striped table-condensed table-responsive" id="packageslist">
-                        <thead>
-                            <tr>
-                                <th style="vertical-align:middle"><input type="text" class="input-sm" autocomplete="off" id="package_search" placeholder="{{ lang._('Name') }}"></th>
-                                <th style="vertical-align:middle">{{ lang._('Version') }}</th>
-                                <th style="vertical-align:middle">{{ lang._('Size') }}</th>
-                                <th style="vertical-align:middle">{{ lang._('Repository') }}</th>
-                                <th style="vertical-align:middle">{{ lang._('License') }}</th>
-                                <th style="vertical-align:middle">{{ lang._('Comment') }}</th>
-                                <th style="vertical-align:middle"></th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
                 <div id="changelog" class="tab-pane">
                     <table class="table table-striped table-condensed table-responsive" id="changeloglist">
                         <thead></thead>
