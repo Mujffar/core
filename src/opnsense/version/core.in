@@ -2,15 +2,15 @@
     "product_abi": "%%CORE_ABI%%",
     "product_arch": "%%CORE_ARCH%%",
     "product_copyright_owner": "Cloud Etel",
-    "product_copyright_url": "Https://cloudetel.com",
+    "product_copyright_url": "https://cloudetel.com",
     "product_copyright_years": "2023",
     "product_email": "%%CORE_MAINTAINER%%",
     "product_flavour": "%%CORE_FLAVOUR%%",
     "product_hash": "%%CORE_HASH%%",
-    "product_id": "reachguard",
+    "product_id": "ReachGuard",
     "product_name": "ReachGuard",
     "product_nickname": "%%CORE_NICKNAME%%",
     "product_series": "%%CORE_SERIES%%",
     "product_version": "%%CORE_PKGVERSION%%",
-    "product_website": "%%CORE_WWW%%"
+    "product_website": "https://cloudetel.com"
 }
